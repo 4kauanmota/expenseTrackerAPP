@@ -10,22 +10,26 @@ function BottomTabsNavigator() {
 
   return (
     <BottomTabs.Navigator screenOptions={{
-      headerStyle: { backgroundColor: GlobalStyles.strongBackground },
-      tabBarStyle: { backgroundColor: GlobalStyles.strongBackground },
-      headerTintColor: GlobalStyles.lightText,
+      headerStyle: { backgroundColor: GlobalStyles.strongestBackground },
+      tabBarStyle: { backgroundColor: GlobalStyles.strongestBackground },
+      headerTintColor: GlobalStyles.lightWhite,
       tabBarInactiveTintColor: GlobalStyles.light + 'aa',
       tabBarActiveTintColor: GlobalStyles.highlight
     }}>
 
       <BottomTabs.Screen name="RecentExpenses" component={RecentExpenses} options={{
         title: 'Recent Expanses',
+        headerTitleStyle: {fontFamily: 'Inter'},
         tabBarLabel: 'Recent',
+        tabBarLabelStyle: {fontFamily: 'Inter'},
         tabBarIcon: ({ color, size }) => <Ionicons name="hourglass" color={color} size={size} />
       }} />
 
       <BottomTabs.Screen name="AllExpenses" component={AllExpenses} options={{
         title: 'All Expanses',
+        headerTitleStyle: {fontFamily: 'Inter'},
         tabBarLabel: 'All',
+        tabBarLabelStyle: {fontFamily: 'Inter'},
         tabBarIcon: ({ color, size }) => <Ionicons name="calendar" color={color} size={size} />
       }} />
 
