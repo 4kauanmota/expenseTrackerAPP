@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import GlobalStyles from "../../constants/GlobalStyles";
+import { getFormattedDate } from "../../util/date";
 
 function Expense({expense}) {
   return (
     <View style={styles.container}>
       <View style={styles.informationsArea}>
-        <Text style={styles.description}> {expense.description} </Text>
+        <Text style={[styles.description, {fontWeight: 'bold'}]}> {expense.description} </Text>
 
-        <Text style={styles.description}> {expense.date.toString()} </Text>
+        <Text style={styles.description}> {getFormattedDate(expense.date)} </Text>
       </View>
 
       <View style={styles.amountArea}>
