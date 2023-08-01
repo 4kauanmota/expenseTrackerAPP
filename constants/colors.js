@@ -6,3 +6,5 @@ const colors = {
   lightText: '#F6F4EB',
   highlight: '91C8E4',
 }
+
+export default colors;
