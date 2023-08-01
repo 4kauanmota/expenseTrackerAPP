@@ -1,8 +1,8 @@
-import { Text } from "react-native";
+import ExpansesOutput from "../components/Expenses/ExpensesOutput";
 
 function AllExpenses() {
-  return(
-    <Text> ae </Text>
+  return (
+    <ExpansesOutput periodName='Total' />
   )
 }
 
