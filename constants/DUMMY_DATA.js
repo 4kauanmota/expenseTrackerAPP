@@ -33,7 +33,7 @@ export const DUMMY_DATA = [
     id: 'e6',
     description: 'A pair of trousers',
     amount: 89.29,
-    date: new Date('2022-01-05'),
+    date: new Date('2023-07-31'),
   },
   {
     id: 'e7',
@@ -51,6 +51,6 @@ export const DUMMY_DATA = [
     id: 'e9',
     description: 'Another book',
     amount: 18.59,
-    date: new Date('2022-02-18'),
+    date: new Date('2023-08-01'),
   },
 ];

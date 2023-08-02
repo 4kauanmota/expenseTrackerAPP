@@ -2,14 +2,13 @@ import { StyleSheet, View } from "react-native";
 
 import ExpansesSumary from "./ExpensesSummary";
 import ExpensesList from "./ExpensesList";
-import { DUMMY_DATA } from "../../constants/DUMMY_DATA";
-import GlobalStyles from "../../constants/GlobalStyles";
+import { colors } from "../4kauanmotaPatterns/GlobalStyles";
 
 function ExpansesOutput({expenses, periodName}) {
   return (
     <View style={styles.container}>
-      <ExpansesSumary expenses={DUMMY_DATA} periodName={periodName} />
-      <ExpensesList expenses={DUMMY_DATA} />
+      <ExpansesSumary expenses={expenses} periodName={periodName} />
+      <ExpensesList expenses={expenses} />
     </View>
   )
 }
@@ -17,7 +16,7 @@ function ExpansesOutput({expenses, periodName}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalStyles.background,
+    backgroundColor: colors.background,
     paddingHorizontal: 8
   }
 })

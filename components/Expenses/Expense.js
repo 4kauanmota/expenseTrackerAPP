@@ -1,12 +1,25 @@
 import { StyleSheet, Text, View } from "react-native";
-import GlobalStyles from "../../constants/GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+
+import { colors } from "../4kauanmotaPatterns/GlobalStyles";
+import PressArea from "../4kauanmotaPatterns/components/PressArea";
+
+
 import { getFormattedDate } from "../../util/date";
 
-function Expense({expense}) {
+function Expense({ expense }) {
+  const navigation = useNavigation();
+
+  function expenseHandler() {
+    navigation.navigate('ManageExpense', {
+      expenseId: expense.id
+    })
+  }
+
   return (
-    <View style={styles.container}>
+    <PressArea style={styles.container} pressStyle={styles.pressArea} onPress={expenseHandler}>
       <View style={styles.informationsArea}>
-        <Text style={[styles.description, {fontWeight: 'bold'}]}> {expense.description} </Text>
+        <Text style={[styles.description, { fontWeight: 'bold' }]}> {expense.description} </Text>
 
         <Text style={styles.description}> {getFormattedDate(expense.date)} </Text>
       </View>
@@ -14,26 +27,30 @@ function Expense({expense}) {
       <View style={styles.amountArea}>
         <Text style={[styles.description, styles.amount]}> {expense.amount} </Text>
       </View>
-    </View>
+    </PressArea>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.light,
+    marginBottom: 10,
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
+
+  pressArea: {
+    padding: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: GlobalStyles.light,
-    marginBottom: 10,
-    padding: 10,
-    borderRadius: 8,
   },
 
   informationsArea: {
     flex: 4,
   },
 
-  description:{
-    color: GlobalStyles.black + 'aa',
+  description: {
+    color: colors.black + 'aa',
     fontFamily: 'Inter',
   },
 
@@ -45,8 +62,8 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     textAlignVertical: 'center',
-    backgroundColor: GlobalStyles.strongBackground,
-    color: GlobalStyles.lightWhite,
+    backgroundColor: colors.strongBackground,
+    color: colors.lightWhite,
     borderRadius: 4,
   }
 })

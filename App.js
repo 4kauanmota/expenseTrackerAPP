@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font'
 
 import StackNavigator from './components/Navegation/Stack';
+import ExpensesContextProvider from './store/expense-context';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -17,9 +18,11 @@ export default function App() {
     <>
       <StatusBar style="auto" />
 
-      <NavigationContainer>
-        <StackNavigator />
-      </NavigationContainer>
+      <ExpensesContextProvider>
+        <NavigationContainer>
+          <StackNavigator />
+        </NavigationContainer>
+      </ExpensesContextProvider>
     </>
   );
 }
