@@ -19,13 +19,13 @@ function Expense({ expense }) {
   return (
     <PressArea style={styles.container} pressStyle={styles.pressArea} onPress={expenseHandler}>
       <View style={styles.informationsArea}>
-        <Text style={[styles.description, { fontWeight: 'bold' }]}> {expense.description} </Text>
+        <Text style={[styles.description, { fontWeight: 'bold', marginRight: 10 }]}>{expense.description}</Text>
 
-        <Text style={styles.description}> {getFormattedDate(expense.date)} </Text>
+        <Text style={styles.description}>{getFormattedDate(expense.date)}</Text>
       </View>
 
       <View style={styles.amountArea}>
-        <Text style={[styles.description, styles.amount]}> {expense.amount} </Text>
+        <Text style={[styles.description, styles.amount]}>{expense.amount}</Text>
       </View>
     </PressArea>
   )
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
 
   pressArea: {
     padding: 10,
+    paddingHorizontal: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

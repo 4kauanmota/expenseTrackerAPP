@@ -1,6 +1,7 @@
 export const colors = {
   white: '#ffffff',
   black: '#000000',
+  error: '#ff6666',
 
   background: '#749BC2',
   strongBackground: '#4682A9',
@@ -12,14 +13,14 @@ export const colors = {
 
 export const shadows = {
   lightShadow: {
-
-  },
+      
+  },  
 
   mediumShadow: {
 
   },
 
   strongShadow: {
-    
-  }
+
+  } 
 }
