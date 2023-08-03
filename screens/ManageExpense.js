@@ -3,14 +3,16 @@ import { View, StyleSheet } from "react-native";
 
 import IconButton from "../components/UI/IconButton";
 import { colors } from "../components/4kauanmotaPatterns/GlobalStyles";
-import MainButton from "../components/UI/MainButton";
 import { ExpensesContext } from "../store/expense-context";
+import ExpenseForm from "../components/Expenses/ExpenseForm";
 
 function ManageExpenses({ navigation, route }) {
   const expenseCtx = useContext(ExpensesContext)
 
   const expenseId = route.params?.expenseId;
   const isEditing = !!expenseId;
+
+  const selectedExpense = expenseCtx.expenses.find((expense) => expense.id === expenseId);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -22,25 +24,15 @@ function ManageExpenses({ navigation, route }) {
     navigation.goBack();
   }
 
-  function confirmHandler() {
-    if(isEditing){
+  function confirmHandler(expense) {
+    if (isEditing) {
       expenseCtx.updateExpense(
         expenseId,
-        {
-          description: 'aaaaaaaaaaaaaaaaaa',
-          amount: 29.99,
-          date: new Date(),
-        }
+        expense
       )
     }
     else {
-      expenseCtx.addExpense(
-        {
-          description: 'bbbbbbbbbbbbbbbbbbb',
-          amount: 29.99,
-          date: new Date(),
-        }
-      )
+      expenseCtx.addExpense(expense)
     }
     navigation.goBack();
   }
@@ -51,29 +43,28 @@ function ManageExpenses({ navigation, route }) {
   }
 
   return (
-    <View>
-      <View style={styles.buttonsArea}>
-        <MainButton mode='flat' onPress={cancelHandler}> Cancel </MainButton>
-        <MainButton onPress={confirmHandler}> {isEditing ? 'Update' : 'Add'} </MainButton>
+    <View style={styles.container}>
+      <View style={{ flex: 1 }}>
+        <ExpenseForm onCancel={cancelHandler} onConfirm={confirmHandler} isEditing={isEditing} defaultValue={selectedExpense} />
       </View>
 
-      {isEditing &&
-        (
-          <View style={styles.deleteArea}>
-            <IconButton icon={'trash'} color={colors.highlight} size={40} onPress={removeHandler} />
-          </View>
-        )
-      }
+      <View style={{ flex: 1 }}>
+        {isEditing &&
+          (
+            <View style={styles.deleteArea}>
+              <IconButton icon={'trash'} color={colors.highlight} size={40} onPress={removeHandler} />
+            </View>
+          )
+        }
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  buttonsArea: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 10,
-  },  
+  container: {
+    flex: 1,
+  },
 
   deleteArea: {
     paddingTop: 8,

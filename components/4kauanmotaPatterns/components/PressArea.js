@@ -7,7 +7,8 @@ function PressArea({ children, onPress, style, pressStyle }) {
   return (
     <View style={[styles.container, style]}>
 
-      {Platform.OS === 'android' ?
+      {Platform.OS === 'android' 
+        ?
         (
           <Pressable onPress={onPress} style={[styles.pressArea, pressStyle]} android_ripple={AndroidPressEffect}>
             {children}

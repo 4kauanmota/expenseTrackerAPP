@@ -12,7 +12,7 @@ function RecentExpenses() {
   const recentExpenses = expenses.expenses.filter((expense) => expense.date >= xDaysAgo && expense.date <= today)
 
   return(
-    <ExpansesOutput periodName='Last 7 Days' expenses={recentExpenses} />
+    <ExpansesOutput periodName='Last 7 Days' expenses={recentExpenses} fallbackText={'No expenses registered for the last 7 days'} />
   )
 }
 

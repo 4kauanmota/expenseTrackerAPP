@@ -7,7 +7,7 @@ function AllExpenses() {
   const expenses = useContext(ExpensesContext)
 
   return (
-    <ExpansesOutput periodName='Total' expenses={expenses.expenses} />
+    <ExpansesOutput periodName='Total' expenses={expenses.expenses} fallbackText={'No expenses registered found'} />
   )
 }
 
