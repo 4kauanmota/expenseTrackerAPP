@@ -10,6 +10,7 @@
     + Expenses
 + Data filter
 + Expenses calculation
++ Input validation
 
 ---
 
